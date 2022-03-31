@@ -26,4 +26,16 @@ class EV(models.Model):
     class Meta:
         verbose_name = "Davlat"
         verbose_name_plural = "Davlatlar"
+
+class BEV(models.Model):
+    bev_country = models.ForeignKey(EV, on_delete=models.CASCADE, related_name="mamlakat")
+    year = models.DateField()
+    ownership = models.IntegerField()
+
+    def __str__(self):
+        return str(self.year)
+
+    class Meta:
+        verbose_name = "Davlat xalqi"
+        verbose_name_plural = "Davlatlar xalqlari"
      
