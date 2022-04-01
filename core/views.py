@@ -12,13 +12,26 @@ class Chart(ListView):
     model = EV
     template_name = 'ev.html'
 
-class BEV(ListView):
-    model = BEV
-    template_name = 'wheel.html'
 
-class LineBEV(ListView):
-    model = BEV
-    template_name = 'linechartjs.html'
+def wheel(request):
+    countries = BEV.objects.all()
+    context = {
+        'countries': countries
+    }
+    
+    return render(request, 'wheel.html', context)
+
+# class BEV(ListView):
+#     model = BEV
+#     template_name = 'wheel.html'
+
+def line(request):
+    countries = BEV.objects.all()
+    context = {
+        'countries': countries
+    }
+    
+    return render(request, 'linechartjs.html', context)
 
 def home(request):
     posts = Post.objects.all()
@@ -34,7 +47,4 @@ def example(request):
     }
     return render(request, "examp.html", context)
 
-class Gauge(ListView):
-    model = EV
-    template_name = 'gauge.html'
 
